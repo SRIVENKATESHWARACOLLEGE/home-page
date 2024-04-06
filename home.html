@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <h2>User Information</h2>
-        <form id="userForm" onsubmit="return openWebsite()">
+        <form id="userForm" onsubmit="return openWebsite()" action="#" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required minlength="3">
             <div id="nameError" class="error-message"></div>
@@ -88,7 +88,24 @@
 
     <script>
         function openWebsite() {
+            var name = document.getElementById('name').value.trim();
             var grade = document.getElementById('grade').value;
+            var nameError = document.getElementById('nameError');
+            var gradeError = document.getElementById('gradeError');
+
+            if (name.length < 3) {
+                nameError.textContent = 'Name must be at least 3 characters long.';
+                return false;
+            } else {
+                nameError.textContent = '';
+            }
+
+            if (grade === '') {
+                gradeError.textContent = 'Please select a grade.';
+                return false;
+            } else {
+                gradeError.textContent = '';
+            }
 
             switch (grade) {
                 case '8':
