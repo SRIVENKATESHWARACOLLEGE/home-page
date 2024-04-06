@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Performance Analysis</title>
+    <title>User Information</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -105,6 +105,21 @@
             if (grade === "") {
                 gradeError.innerHTML = "Please select a grade";
                 isValid = false;
+            } else {
+                // Open corresponding website based on grade selection
+                switch (grade) {
+                    case '8':
+                        window.location.href = 'https://srivenkateshwaracollege.github.io/grade-8/g-8.html';
+                        break;
+                    case '9':
+                        window.location.href = 'https://srivenkateshwaracollege.github.io/grade-9/g-9.html';
+                        break;
+                    case '10':
+                        window.location.href = 'https://srivenkateshwaracollege.github.io/grade-10/g-10.html';
+                        break;
+                    default:
+                        break;
+                }
             }
 
             return isValid;
