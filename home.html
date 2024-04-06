@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <h2>User Information</h2>
-        <form id="userForm" onsubmit="return validateForm()">
+        <form id="userForm" onsubmit="return openWebsite()">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required minlength="3">
             <div id="nameError" class="error-message"></div>
@@ -87,44 +87,25 @@
     </div>
 
     <script>
-        function validateForm() {
-            var name = document.getElementById('name').value;
+        function openWebsite() {
             var grade = document.getElementById('grade').value;
-            var nameError = document.getElementById('nameError');
-            var gradeError = document.getElementById('gradeError');
-            var isValid = true;
 
-            nameError.innerHTML = "";
-            gradeError.innerHTML = "";
-
-            if (name.length < 3) {
-                nameError.innerHTML = "Name must be at least 3 characters";
-                isValid = false;
+            switch (grade) {
+                case '8':
+                    window.open('https://srivenkateshwaracollege.github.io/grade-8/g-8.html', '_blank');
+                    break;
+                case '9':
+                    window.open('https://srivenkateshwaracollege.github.io/grade-9/g-9.html', '_blank');
+                    break;
+                case '10':
+                    window.open('https://srivenkateshwaracollege.github.io/grade-10/g-10.html', '_blank');
+                    break;
+                default:
+                    break;
             }
 
-            if (grade === "") {
-                gradeError.innerHTML = "Please select a grade";
-                isValid = false;
-            } else {
-                // Open corresponding website based on grade selection
-                switch (grade) {
-                    case '8':
-                        window.location.href = 'https://srivenkateshwaracollege.github.io/grade-8/g-8.html';
-                        break;
-                    case '9':
-                        window.location.href = 'https://srivenkateshwaracollege.github.io/grade-9/g-9.html';
-                        break;
-                    case '10':
-                        window.location.href = 'https://srivenkateshwaracollege.github.io/grade-10/g-10.html';
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            return isValid;
+            return false; // Prevent form submission
         }
     </script>
 </body>
 </html>
-
